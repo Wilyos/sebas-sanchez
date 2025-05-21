@@ -573,6 +573,7 @@ transform: scale(1.03);
 
   
   .home {
+    margin-top: auto;
     flex-direction: column-reverse;
     gap: 15rem;
     align-items: center;
