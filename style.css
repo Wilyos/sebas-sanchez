@@ -570,12 +570,16 @@ transform: scale(1.03);
 
 @media (max-width: 500px) {
 
-
+  .html{
+    font-size: 40%;
+    overflow-x: hidden;
+  }
+  
   
   .home {
-    margin-top: auto;
+    margin-top: 15rem;
     flex-direction: column-reverse;
-    gap: 15rem;
+    gap: 2rem;
     align-items: center;
     justify-content: center;
   }
