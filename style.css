@@ -574,7 +574,7 @@ transform: scale(1.03);
   
   .home {
     flex-direction: column-reverse;
-    gap: 2rem;
+    gap: 15rem;
     align-items: center;
     justify-content: center;
   }
