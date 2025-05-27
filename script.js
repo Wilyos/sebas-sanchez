@@ -21,3 +21,27 @@ sobreMi.onclick = () => {
         behavior:"smooth"
     });
 }
+
+
+const vcardData = `
+BEGIN:VCARD
+VERSION:3.0
+FN:Sebastian Sanchez
+N:Sebastian;Sanchez;;;
+ORG:Sistemas litográficos
+TEL;TYPE=work:+57 311 6111687
+EMAIL:contacto@sistemaslitograficos.com
+URL:https://www.sistemaslitograficos.com.co
+URL:https://sebastian-sanchez.netlify.app/
+X-SOCIALPROFILE;type=Instagram:https://www.instagram.com/sistemaslitograficossas/
+X-SOCIALPROFILE;type=Instagram:https://www.instagram.com/cuatrotorres/
+END:VCARD
+  `.trim();
+
+
+
+  const blob = new Blob([vcardData], { type: 'text/vcard' });
+  const url = URL.createObjectURL(blob);
+
+  const downloadLink = document.getElementById('downloadContact');
+  downloadLink.href = url;
