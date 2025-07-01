@@ -12,7 +12,7 @@ let index = 0;
 const visible = window.innerWidth < 700 ? 2 : 3;
 
 
-for (let i = 0; i < visible; i++) {
+for (let i = 0; i <= visible +1; i++) {
   const clone = items[i].cloneNode(true);
   track.appendChild(clone);
 }
