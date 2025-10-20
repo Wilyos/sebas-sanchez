@@ -9,10 +9,10 @@ const items = document.querySelectorAll('.carousel-item');
 const btnLeft = document.querySelector('.carousel-btn.left');
 const btnRight = document.querySelector('.carousel-btn.right');
 let index = 0;
-const visible = window.innerWidth < 700 ? 2 : 3;
+let visible = window.innerWidth < 700 ? 2 : 3;
 
-
-for (let i = 0; i <= visible +1; i++) {
+const totalToClone = Math.min(items.length, visible + 1);
+for (let i = 0; i < totalToClone; i++) {
   const clone = items[i].cloneNode(true);
   track.appendChild(clone);
 }
@@ -74,13 +74,15 @@ track.addEventListener('mouseleave', () => {
 updateCarousel();
 
 
-contacto.onclick = (e) => {
-    e.preventDefault();
-    const downloadLink = document.querySelector('#downloadContact');
-    if (downloadLink) {
-        downloadLink.click();
-    }
-};
+contacto.addEventListener('click', (e) => {
+  e.preventDefault();
+  const contactSection = document.getElementById('contacto');
+  if (contactSection) {
+    contactSection.scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+});
 
 
 sobreMi.onclick = () => {
@@ -111,4 +113,30 @@ END:VCARD
   const url = URL.createObjectURL(blob);
 
   const downloadLink = document.getElementById('downloadContact');
-  downloadLink.href = url;
+  if (downloadLink) {
+    downloadLink.href = url;
+  }
+
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const formData = new FormData(contactForm);
+    const name = (formData.get('name') || '').toString().trim();
+    const email = (formData.get('email') || '').toString().trim();
+    const phone = (formData.get('phone') || '').toString().trim();
+    const messageBody = (formData.get('message') || '').toString().trim();
+
+    const assembledMessage = `Hola, mi nombre es ${name || 'N/A'}, mis datos son ${email || 'N/A'} y ${phone || 'N/A'}\n${messageBody}`;
+    const encodedMessage = encodeURIComponent(assembledMessage);
+    const whatsappUrl = `https://wa.me/message/JYR4EQ7PPXWEM1?text=${encodedMessage}`;
+
+    window.open(whatsappUrl, '_blank', 'noopener');
+
+    if (downloadLink) {
+      downloadLink.click();
+    }
+
+    contactForm.reset();
+  });
+}
