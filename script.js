@@ -129,7 +129,7 @@ if (contactForm) {
 
     const assembledMessage = `Hola, mi nombre es ${name || 'N/A'}, mis datos son ${email || 'N/A'} y ${phone || 'N/A'}\n${messageBody}`;
     const encodedMessage = encodeURIComponent(assembledMessage);
-  const whatsappUrl = `https://api.whatsapp.com/send?phone=573116111687&text=${encodedMessage}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=573116111687&text=${encodedMessage}`;
 
     window.open(whatsappUrl, '_blank', 'noopener');
 
