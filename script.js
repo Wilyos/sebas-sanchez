@@ -1,98 +1,39 @@
-let menuIcon = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.navbar');
-let contacto = document.querySelector('#btn-contacto');
-let sobreMi = document.querySelector('#btn-sobreMi')
+document.addEventListener('DOMContentLoaded', () => {
+  const menuIcon = document.querySelector('#menu-icon');
+  const navbar = document.querySelector('.navbar');
+  const contacto = document.querySelector('#btn-contacto');
+  const sobreMi = document.querySelector('#btn-sobreMi');
+  const downloadLink = document.getElementById('downloadContact');
+  const contactForm = document.getElementById('contact-form');
 
-// Carrusel de Clientes
-const track = document.querySelector('.carousel-track');
-const items = document.querySelectorAll('.carousel-item');
-const btnLeft = document.querySelector('.carousel-btn.left');
-const btnRight = document.querySelector('.carousel-btn.right');
-let index = 0;
-let visible = window.innerWidth < 700 ? 2 : 3;
-
-const totalToClone = Math.min(items.length, visible + 1);
-for (let i = 0; i < totalToClone; i++) {
-  const clone = items[i].cloneNode(true);
-  track.appendChild(clone);
-}
-
-
-function updateCarousel(animate = true) {
-  const itemWidth = items[0].offsetWidth + 32; // 32px gap
-  if (animate) {
-    track.style.transition = 'transform 0.5s ease';
-  } else {
-    track.style.transition = 'none';
-  }
-  track.style.transform = `translateX(-${index * itemWidth}px)`;
-}
-
-/* btnLeft.addEventListener('click', () => {
-  if (index > 0) index--;
-  updateCarousel();
-});
-btnRight.addEventListener('click', () => {
-  if (index < items.length - visible) index++;
-  updateCarousel();
-});  */
-
-let autoSlide = setInterval(() => {
-  index++;
-  updateCarousel();
-  // Si llegamos al final de los clones, reseteamos sin animación
-  if (index === items.length) {
-    setTimeout(() => {
-      index = 0;
-      updateCarousel(false);
-    }, 500); // Espera a que termine la animación
-  }
-}, 2500);
-
-window.addEventListener('resize', () => {
-  visible = window.innerWidth < 700 ? 2 : 3;
-  updateCarousel();
-});
-
-menuIcon.onclick = () => {
-    menuIcon.classList.toggle('bx-x');
-    navbar.classList.toggle('active');
-}
-
-track.addEventListener('mouseenter', () => clearInterval(autoSlide));
-track.addEventListener('mouseleave', () => {
-  autoSlide = setInterval(() => {
-    if (index < items.length - visible) {
-      index++;
-    } else {
-      index = 0;
-    }
-    updateCarousel();
-  }, 2500);
-});
-
-updateCarousel();
-
-
-contacto.addEventListener('click', (e) => {
-  e.preventDefault();
-  const contactSection = document.getElementById('contacto');
-  if (contactSection) {
-    contactSection.scrollIntoView({
-      behavior: 'smooth'
+  if (menuIcon && navbar) {
+    menuIcon.addEventListener('click', () => {
+      menuIcon.classList.toggle('bx-x');
+      navbar.classList.toggle('active');
     });
   }
-});
 
-
-sobreMi.onclick = () => {
-    document.getElementById("sobreMi").scrollIntoView({
-        behavior:"smooth"
+  if (contacto) {
+    contacto.addEventListener('click', (event) => {
+      event.preventDefault();
+      const contactSection = document.getElementById('contacto');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
     });
-}
+  }
 
+  if (sobreMi) {
+    sobreMi.addEventListener('click', () => {
+      const aboutSection = document.getElementById('sobreMi');
+      if (aboutSection) {
+        aboutSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
 
-const vcardData = `
+  if (downloadLink) {
+    const vcardData = `
 BEGIN:VCARD
 VERSION:3.0
 FN:Sebastian Sanchez
@@ -105,38 +46,84 @@ URL:https://sebastian-sanchez.netlify.app/
 X-SOCIALPROFILE;type=Instagram:https://www.instagram.com/sistemaslitograficossas/
 X-SOCIALPROFILE;type=Instagram:https://www.instagram.com/cuatrotorres/
 END:VCARD
-  `.trim();
+    `.trim();
 
-
-
-  const blob = new Blob([vcardData], { type: 'text/vcard' });
-  const url = URL.createObjectURL(blob);
-
-  const downloadLink = document.getElementById('downloadContact');
-  if (downloadLink) {
+    const blob = new Blob([vcardData], { type: 'text/vcard' });
+    const url = URL.createObjectURL(blob);
     downloadLink.href = url;
   }
 
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-  contactForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const formData = new FormData(contactForm);
-    const name = (formData.get('name') || '').toString().trim();
-    const email = (formData.get('email') || '').toString().trim();
-    const phone = (formData.get('phone') || '').toString().trim();
-    const messageBody = (formData.get('message') || '').toString().trim();
+  if (contactForm) {
+    contactForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const formData = new FormData(contactForm);
+      const name = (formData.get('name') || '').toString().trim();
+      const email = (formData.get('email') || '').toString().trim();
+      const phone = (formData.get('phone') || '').toString().trim();
+      const messageBody = (formData.get('message') || '').toString().trim();
 
-    const assembledMessage = `Hola, mi nombre es ${name || 'N/A'}, mis datos son ${email || 'N/A'} y ${phone || 'N/A'}\n${messageBody}`;
-    const encodedMessage = encodeURIComponent(assembledMessage);
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=573116111687&text=${encodedMessage}`;
+      const assembledMessage = `Hola, mi nombre es ${name || 'N/A'}, mis datos son ${email || 'N/A'} y ${phone || 'N/A'}\n${messageBody}`;
+      const encodedMessage = encodeURIComponent(assembledMessage);
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=573116111687&text=${encodedMessage}`;
 
-    window.open(whatsappUrl, '_blank', 'noopener');
+      window.open(whatsappUrl, '_blank', 'noopener');
 
-    if (downloadLink) {
-      downloadLink.click();
+      if (downloadLink) {
+        downloadLink.click();
+      }
+
+      contactForm.reset();
+    });
+  }
+
+  const track = document.querySelector('.carousel-track');
+  const items = track ? Array.from(track.querySelectorAll('.carousel-item')) : [];
+
+  if (track && items.length) {
+    let index = 0;
+    let visible = window.innerWidth < 700 ? 2 : 3;
+    const originalLength = items.length;
+    const totalToClone = Math.min(originalLength, visible + 1);
+
+    for (let i = 0; i < totalToClone; i++) {
+      track.appendChild(items[i].cloneNode(true));
     }
 
-    contactForm.reset();
-  });
-}
+    const updateCarousel = (animate = true) => {
+      const itemWidth = items[0].offsetWidth + 32; // 32px gap aproximado
+      track.style.transition = animate ? 'transform 0.5s ease' : 'none';
+      track.style.transform = `translateX(-${index * itemWidth}px)`;
+    };
+
+    const startAutoSlide = () => {
+      return setInterval(() => {
+        index++;
+        updateCarousel();
+        if (index === originalLength) {
+          setTimeout(() => {
+            index = 0;
+            updateCarousel(false);
+          }, 500);
+        }
+      }, 2500);
+    };
+
+    let autoSlide = startAutoSlide();
+
+    track.addEventListener('mouseenter', () => {
+      clearInterval(autoSlide);
+    });
+
+    track.addEventListener('mouseleave', () => {
+      clearInterval(autoSlide);
+      autoSlide = startAutoSlide();
+    });
+
+    window.addEventListener('resize', () => {
+      visible = window.innerWidth < 700 ? 2 : 3;
+      updateCarousel(false);
+    });
+
+    updateCarousel(false);
+  }
+});
