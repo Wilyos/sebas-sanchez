@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const sobreMi = document.querySelector('#btn-sobreMi');
   const downloadLink = document.getElementById('downloadContact');
   const contactForm = document.getElementById('contact-form');
+  // Pega aquí tu URL de la Web App de Google Apps Script cuando la despliegues
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw34uUnVRknwP2eil759X1mfyeeGbEVNcQv4X-JVMfWKk_NyLI9EF6D__JOB6lCnSrk/exec';
 
   if (menuIcon && navbar) {
     menuIcon.addEventListener('click', () => {
@@ -67,6 +69,23 @@ END:VCARD
       const whatsappUrl = `https://api.whatsapp.com/send?phone=573116111687&text=${encodedMessage}`;
 
       window.open(whatsappUrl, '_blank', 'noopener');
+
+      // Envío en segundo plano a Google Sheets (Apps Script)
+      if (APPS_SCRIPT_URL && APPS_SCRIPT_URL.startsWith('http')) {
+        const payload = new URLSearchParams({
+          name,
+          email,
+          phone,
+          message: messageBody,
+          origin: location.origin,
+          page: location.href,
+          userAgent: navigator.userAgent
+        });
+        // no-cors para evitar errores de CORS en el navegador (respuesta opaca)
+        fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: payload }).catch((err) => {
+          console.warn('No se pudo enviar a Apps Script:', err);
+        });
+      }
 
       if (downloadLink) {
         downloadLink.click();
