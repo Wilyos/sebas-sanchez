@@ -1,304 +1,400 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sebastian Sánchez</title>
+    <title>Sebastian Sánchez · Gerente Comercial</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="stylesheet" href="assets/fonts/boxicons.min.css" />
   </head>
   <body>
-    <header class="header">
-      <a href="" class="logo">
-        Sebastian <span>Sánchez</span>
-      </a>
 
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="header">
+      <a href="#home" class="logo">Sebastian <span>Sánchez</span></a>
       <i class="bx bx-menu" id="menu-icon"></i>
-
       <nav class="navbar">
         <a href="#home">Home</a>
         <a href="#sobreMi">Sobre mi</a>
         <a href="#solucion">Soluciones</a>
         <a href="#contacto">Contacto</a>
       </nav>
-      <button id="lang-toggle" class="btn" style="margin-left:1rem;">EN</button>
-      <a href="#contacto">
-        <button class="gradient-btn">Contáctame</button>
-      </a>
+      <div class="header-actions">
+        <button id="lang-toggle" class="lang-btn">EN</button>
+        <a href="#contacto">
+          <button class="gradient-btn">Contáctame</button>
+        </a>
+      </div>
     </header>
-    
 
-
+    <!-- ===== HERO ===== -->
     <section class="home" id="home">
-      <div class="home-content">
-        <h1>Hola, soy <span>Sebastian Sánchez</span></h1>
-        <h3>
-           Gerente <span>Comercial</span>
-        </h3>
-        <p>
-          En Sistemas Litográficos tenemos las soluciones que necesitas para tu proximo proyecto
-        </p>
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
 
-        <div class="social-icons">
-          <div class="social-icons-desc-box">
-            <a id="downloadContact" href="#" download="Sistemas.vcf">
-              <i class='bx bx-phone'></i>
-            </a>
-            <p style="font-size: small;">contacto</p>
-          </div>
-          
-          <div class="social-icons-desc-box">
-            <a href="https://wa.me/message/JYR4EQ7PPXWEM1" target="_blank">
-              <i class="bx bxl-whatsapp"></i>
-            </a>
-            <p style="font-size: small;">whatsapp</p>
-          </div>
-
-          <div class="social-icons-desc-box">
-            <a href="https://www.instagram.com/sistemaslitograficossas/">
-              <i class='bx bxl-instagram'></i>
-            </a>
-            <p style="font-size: small;">Sistemas</p>
-          </div>
-          
-          <div class="social-icons-desc-box">
-            <a href="https://www.instagram.com/cuatrotorres/">
-              <i class='bx bxl-instagram'></i>
-            </a>
-            <p style="font-size: small;">cuatro Torres</p>
-          </div>
+      <div class="home-content reveal">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Disponible para proyectos
         </div>
+        <h1>Hola, soy <span>Sebastian Sánchez</span></h1>
+        <h3>Gerente <span>Comercial</span></h3>
+        <p>En Sistemas Litográficos tenemos las soluciones que necesitas para tu próximo proyecto</p>
+
+        <div class="social-links">
+          <a id="downloadContact" href="#" class="social-link">
+            <span class="social-link-icon"><i class="bx bx-phone"></i></span>
+            <span class="social-link-label no-gradient">Guardar contacto</span>
+          </a>
+          <a href="https://wa.me/message/JYR4EQ7PPXWEM1" target="_blank" rel="noopener" class="social-link">
+            <span class="social-link-icon"><i class="bx bxl-whatsapp"></i></span>
+            <span class="social-link-label no-gradient">WhatsApp</span>
+          </a>
+          <a href="https://www.instagram.com/sistemaslitograficossas/" target="_blank" rel="noopener" class="social-link">
+            <span class="social-link-icon"><i class="bx bxl-instagram"></i></span>
+            <span class="social-link-label no-gradient">@sistemaslito</span>
+          </a>
+          <a href="https://www.instagram.com/cuatrotorres/" target="_blank" rel="noopener" class="social-link">
+            <span class="social-link-icon"><i class="bx bxl-instagram"></i></span>
+            <span class="social-link-label no-gradient">@cuatrotorres</span>
+          </a>
+        </div>
+
         <div class="btn-group">
-          
-            <button id="btn-contacto" class="btn ">Guardar contacto</button>
-            <button id="btn-sobreMi" class="btn">Sobre mi</button>
+          <button id="btn-contacto" class="btn">Guardar contacto</button>
+          <button id="btn-sobreMi" class="btn btn-outline">Sobre mí</button>
         </div>
       </div>
 
-
-      <div class="home-image">
-        <img src="assets/sebasProfile.png" alt="" />
+      <div class="home-image reveal">
+        <div class="morph-wrapper">
+          <img src="assets/sebasProfile.png" alt="Sebastian Sánchez" />
+          <div class="morph-ring"></div>
+        </div>
       </div>
     </section>
 
-    <section class="about" id="sobreMi">
-      <div class="about-img">
-        <img src="assets/sebasProfile.png" alt="" loading="lazy" />
+    <!-- ===== STATS ===== -->
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-card reveal">
+          <span class="stat-number" data-target="20">0</span><span class="stat-suffix">+</span>
+          <p>Años de experiencia</p>
+        </div>
+        <div class="stat-card reveal">
+          <span class="stat-number" data-target="500">0</span><span class="stat-suffix">+</span>
+          <p>Clientes satisfechos</p>
+        </div>
+        <div class="stat-card reveal">
+          <span class="stat-number" data-target="6">0</span><span class="stat-suffix"></span>
+          <p>Líneas de servicio</p>
+        </div>
+        <div class="stat-card reveal">
+          <span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span>
+          <p>Compromiso ambiental</p>
+        </div>
       </div>
-      <div class="about-content">
-        <h2>Sobre <span>Mi</span></h2>
-        <p>
-          Dirijo la operación con una visión estratégica centrada en eficiencia, sostenibilidad y excelencia en impresión litográfica junto al mundo digital.
-        </p>
-        <a href="https://wa.me/message/JYR4EQ7PPXWEM1" target="_blank">
+    </section>
+
+    <!-- ===== SOBRE MÍ ===== -->
+    <section class="about" id="sobreMi">
+      <div class="about-img reveal">
+        <div class="about-img-frame">
+          <img src="assets/sebasProfile.png" alt="Sebastian Sánchez" loading="lazy" />
+        </div>
+      </div>
+      <div class="about-content reveal">
+        <span class="section-tag">Sobre mí</span>
+        <h2>Gerente <span>Comercial</span> con visión estratégica</h2>
+        <p>Dirijo la operación con una visión estratégica centrada en eficiencia, sostenibilidad y excelencia en impresión litográfica junto al mundo digital.</p>
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <i class="bx bx-check-circle"></i>
+            <span class="no-gradient">Impresión litográfica de alta calidad</span>
+          </div>
+          <div class="highlight-item">
+            <i class="bx bx-check-circle"></i>
+            <span class="no-gradient">Empaques y material POP personalizado</span>
+          </div>
+          <div class="highlight-item">
+            <i class="bx bx-check-circle"></i>
+            <span class="no-gradient">Soluciones digitales y NFC</span>
+          </div>
+        </div>
+        <a href="https://wa.me/message/JYR4EQ7PPXWEM1" target="_blank" rel="noopener">
           <button class="btn">Contáctame</button>
         </a>
       </div>
     </section>
 
-    <section id="#Empresa" class="projects">
-
+    <!-- ===== EMPRESA ===== -->
+    <section id="empresa" class="projects">
+      <span class="section-tag centered">La empresa</span>
       <h2 class="heading">Nuestra <span>Empresa</span></h2>
-
       <div class="projects-box">
-
-        <div class="project-card">
-          <img src="/assets/20a.png" alt="logo" loading="lazy">
-
+        <div class="project-card reveal">
+          <img src="/assets/20a.png" alt="20 años" loading="lazy" />
           <h3>Nosotros</h3>
-
-          <p>
-            Somos una empresa con mas de 20 años transformando ideas en impresiones de alto impacto, con diseños enfocados en la innovación, calidad y usando siempre la tecnología de vanguardia.
-          </p>
+          <p>Somos una empresa con más de 20 años transformando ideas en impresiones de alto impacto, con diseños enfocados en la innovación, calidad y usando siempre la tecnología de vanguardia.</p>
         </div>
-
-        <div class="project-card">
-          <img src="/assets/logoSis.png" alt="eco" loading="lazy">
-
+        <div class="project-card reveal">
+          <img src="/assets/logoSis.png" alt="Ecosistema" loading="lazy" />
           <h3>Comprometidos con el medio ambiente</h3>
-
-          <p>
-            Diseñamos e imprimimos con responsabilidad ambiental, usando materiales y procesos sostenibles.
-          </p>
+          <p>Diseñamos e imprimimos con responsabilidad ambiental, usando materiales y procesos sostenibles.</p>
         </div>
-      
-
-    <div class="project-card">
-      <img src="/assets/impresion-offset.webp" alt="soluciones" loading="lazy">
-
-            <h3>Producimos</h3>
-
-            <p>
-              Desde agendas, libros y revistas hasta empaques personalizados, material corporativo, publicidad exterior y soluciones POP. Creamos lo que tu marca necesita para destacar.
-            </p>
+        <div class="project-card reveal">
+          <img src="/assets/impresion-offset.webp" alt="Producción" loading="lazy" />
+          <h3>Producimos</h3>
+          <p>Desde agendas, libros y revistas hasta empaques personalizados, material corporativo, publicidad exterior y soluciones POP. Creamos lo que tu marca necesita para destacar.</p>
         </div>
+      </div>
     </section>
 
+    <!-- ===== SERVICIOS ===== -->
     <section class="services" id="solucion">
-
+      <span class="section-tag centered">Lo que hacemos</span>
       <h2 class="heading">Soluciones</h2>
-        
-
-      
       <div class="services-container">
-          <div class="service-box">
-            <div class="service-info">
-                <i class='bx bx-book-content'></i>
-                <h4>Editorial</h4>
-                <p>
-                  Transformamos ideas en publicaciones memorables. Ideal para libros, revistas y más
-                </p>
-            </div>
+
+        <div class="service-box reveal">
+          <div class="service-front">
+            <i class="bx bx-book-content"></i>
+            <h4>Editorial</h4>
           </div>
-
-
-          <div class="service-box">
-            <div class="service-info">
-                <i class='bx bx-message-dots'></i>
-                <h4>Publicidad</h4>
-                <p>
-                  Diseños impactantes que venden. Dale presencia a tu marca con piezas promocionales.
-                </p>
-            </div>
+          <div class="service-back">
+            <h4>Editorial</h4>
+            <p>Transformamos ideas en publicaciones memorables. Ideal para libros, revistas y más</p>
           </div>
+        </div>
 
-          <div class="service-box">
-            <div class="service-info">
-                <i class='bx bx-buildings'></i>
-                <h4>Corporativo</h4>
-                <p>
-                  Impulsa tu identidad visual con artículos que comunican profesionalismo.
-                </p>
-            </div>
+        <div class="service-box reveal">
+          <div class="service-front">
+            <i class="bx bx-message-dots"></i>
+            <h4>Publicidad</h4>
           </div>
-
-          <div class="service-box">
-            <div class="service-info">
-                <i class='bx bx-package'></i>
-                <h4>Empaques</h4>
-                <p>
-                  Crea una experiencia de marca desde el primer contacto. Empaques que destacan.
-
-                </p>
-            </div>
+          <div class="service-back">
+            <h4>Publicidad</h4>
+            <p>Diseños impactantes que venden. Dale presencia a tu marca con piezas promocionales.</p>
           </div>
+        </div>
 
-
-          <div class="service-box">
-            <div class="service-info">
-                <i class='bx bx-buildings'></i>
-                <h4>Publicidad Exterior</h4>
-                <p>
-                  Atrae miradas con formatos grandes y resistentes. Ideal para calles y eventos.
-
-                </p>
-            </div>
+        <div class="service-box reveal">
+          <div class="service-front">
+            <i class="bx bx-buildings"></i>
+            <h4>Corporativo</h4>
           </div>
-
-
-          <div class="service-box">
-            <div class="service-info">
-               <i class='bx bx-coffee'></i>
-                <h4>Material P.O.P</h4>
-                <p>
-                  Destaca en el punto de venta con piezas creativas y funcionales.
-
-                </p>
-            </div>
+          <div class="service-back">
+            <h4>Corporativo</h4>
+            <p>Impulsa tu identidad visual con artículos que comunican profesionalismo.</p>
           </div>
+        </div>
 
+        <div class="service-box reveal">
+          <div class="service-front">
+            <i class="bx bx-package"></i>
+            <h4>Empaques</h4>
+          </div>
+          <div class="service-back">
+            <h4>Empaques</h4>
+            <p>Crea una experiencia de marca desde el primer contacto. Empaques que destacan.</p>
+          </div>
+        </div>
+
+        <div class="service-box reveal">
+          <div class="service-front">
+            <i class="bx bx-street-view"></i>
+            <h4>Publicidad Exterior</h4>
+          </div>
+          <div class="service-back">
+            <h4>Publicidad Exterior</h4>
+            <p>Atrae miradas con formatos grandes y resistentes. Ideal para calles y eventos.</p>
+          </div>
+        </div>
+
+        <div class="service-box reveal">
+          <div class="service-front">
+            <i class="bx bx-coffee"></i>
+            <h4>Material P.O.P</h4>
+          </div>
+          <div class="service-back">
+            <h4>Material P.O.P</h4>
+            <p>Destaca en el punto de venta con piezas creativas y funcionales.</p>
+          </div>
+        </div>
 
       </div>
-
-
-
     </section>
-    
+
+    <!-- ===== PROCESO ===== -->
+    <section class="process-section">
+      <span class="section-tag centered">Cómo trabajamos</span>
+      <h2 class="heading">Nuestro <span>Proceso</span></h2>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-number">01</div>
+          <i class="bx bx-conversation"></i>
+          <h4>Consulta</h4>
+          <p>Entendemos tu necesidad y definimos el alcance del proyecto.</p>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step reveal">
+          <div class="step-number">02</div>
+          <i class="bx bx-palette"></i>
+          <h4>Diseño</h4>
+          <p>Creamos propuestas visuales alineadas con tu marca.</p>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step reveal">
+          <div class="step-number">03</div>
+          <i class="bx bx-printer"></i>
+          <h4>Producción</h4>
+          <p>Imprimimos con tecnología de vanguardia y control de calidad.</p>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step reveal">
+          <div class="step-number">04</div>
+          <i class="bx bx-check-shield"></i>
+          <h4>Entrega</h4>
+          <p>Despachamos en tiempo y forma, garantizando tu satisfacción.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SOLUCIONES DIGITALES ===== -->
     <section class="other-services" id="other-services">
+      <span class="section-tag centered">Más allá del papel</span>
       <h2 class="heading">Soluciones Digitales</h2>
       <div class="other-services-container">
-        <div class="other-service-card">
+        <div class="other-service-card reveal">
           <h3>Sistemas NFC</h3>
-          <img src="/assets/snfclogo.png" alt="" loading="lazy">
+          <img src="/assets/snfclogo.png" alt="NFC" loading="lazy" />
           <p>Conoce nuestras tarjetas de presentación web personalizadas.</p>
-          <a href="https://drive.google.com/file/d/1HELxpTKUnFfcVerUGQ8Z6QAVnPPWyxRC/view?usp=sharing" target="_blank" class="btn">Ver más</a>
+          <a href="https://drive.google.com/file/d/1HELxpTKUnFfcVerUGQ8Z6QAVnPPWyxRC/view?usp=sharing" target="_blank" rel="noopener" class="btn">Ver más</a>
         </div>
-        <div class="other-service-card">
+        <div class="other-service-card reveal">
           <h3>Sistemas Digitales</h3>
-          <img src="/assets/sdiglogo.png" alt="" loading="lazy">
-          <p>
-            ofrecemos una amplia gama de servicios diseñados para abordar cualquier desafío de marketing que tu empresa pueda enfrentar.  
-          </p>
-          <a href="https://drive.google.com/file/d/1wnH78_-po897QsOqsjouaAimXZKQ5pnp/view?usp=sharing" target="_blank" class="btn">Ver más</a>
+          <img src="/assets/sdiglogo.png" alt="Digital" loading="lazy" />
+          <p>Ofrecemos una amplia gama de servicios diseñados para abordar cualquier desafío de marketing que tu empresa pueda enfrentar.</p>
+          <a href="https://drive.google.com/file/d/1wnH78_-po897QsOqsjouaAimXZKQ5pnp/view?usp=sharing" target="_blank" rel="noopener" class="btn">Ver más</a>
         </div>
       </div>
     </section>
 
-
+    <!-- ===== CLIENTES ===== -->
     <section class="clientes" id="clientes">
+      <span class="section-tag centered">Confían en nosotros</span>
       <h2 class="heading">Nuestros <span>Clientes</span></h2>
       <div class="carousel-container">
-      <!-- <button class="carousel-btn left" aria-label="Anterior">&#10094;</button> -->
         <div class="carousel-track">
-          <div class="carousel-item"><img src="assets/clientes/LINEA E METROv2.png" alt="Cliente 1" loading="lazy"></div>
-          <div class="carousel-item"><img src="assets/clientes/AUTOLARTEv2.png" alt="Cliente 2" loading="lazy"></div>
-          <div class="carousel-item"><img src="assets/clientes/ALCALDIA DE BELLOv2.png" alt="Cliente 3" loading="lazy"></div>
-          <div class="carousel-item"><img src="assets/clientes/CACONSULTORESv2.png" alt="Cliente 4" loading="lazy"></div>
-          <div class="carousel-item"><img src="assets/clientes/ALCALDIA DE RIONEGROv2.png" alt="Cliente 5" loading="lazy"></div>
-          <div class="carousel-item"><img src="assets/clientes/COMFENALCOv2.png" alt="Cliente 6" loading="lazy"></div>
-          <div class="carousel-item"><img src="assets/clientes/D1v2.png" alt="Cliente 6" loading="lazy"></div>
-          <div class="carousel-item"><img src="assets/clientes/DROGUERIA TODO DROGASv2.png" alt="Cliente 7" loading="lazy"></div>
-          <div class="carousel-item"><img src="assets/clientes/INSTITU FERRINIv2.png" alt="Cliente 8" loading="lazy"></div>
-          <div class="carousel-item"><img src="assets/clientes/LUMAv2.png" alt="Cliente 9" loading="lazy"></div>
-          <div class="carousel-item"><img src="assets/clientes/OSANAv2.png" alt="Cliente 10" loading="lazy"></div>
-          <div class="carousel-item"><img src="assets/clientes/PEGAKLEINv2.png" alt="Cliente 11" loading="lazy"></div>
-          <div class="carousel-item"><img src="assets/clientes/PINVIACRILv2.png" alt="Cliente 12" loading="lazy"></div>
+          <div class="carousel-item"><img src="assets/clientes/LINEA E METROv2.png" alt="Línea E Metro" loading="lazy" /></div>
+          <div class="carousel-item"><img src="assets/clientes/AUTOLARTEv2.png" alt="Autolarte" loading="lazy" /></div>
+          <div class="carousel-item"><img src="assets/clientes/ALCALDIA DE BELLOv2.png" alt="Alcaldía de Bello" loading="lazy" /></div>
+          <div class="carousel-item"><img src="assets/clientes/CACONSULTORESv2.png" alt="CA Consultores" loading="lazy" /></div>
+          <div class="carousel-item"><img src="assets/clientes/ALCALDIA DE RIONEGROv2.png" alt="Alcaldía de Rionegro" loading="lazy" /></div>
+          <div class="carousel-item"><img src="assets/clientes/COMFENALCOv2.png" alt="Comfenalco" loading="lazy" /></div>
+          <div class="carousel-item"><img src="assets/clientes/D1v2.png" alt="D1" loading="lazy" /></div>
+          <div class="carousel-item"><img src="assets/clientes/DROGUERIA TODO DROGASv2.png" alt="Droguería Todo Drogas" loading="lazy" /></div>
+          <div class="carousel-item"><img src="assets/clientes/INSTITU FERRINIv2.png" alt="Instituto Ferrini" loading="lazy" /></div>
+          <div class="carousel-item"><img src="assets/clientes/LUMAv2.png" alt="Luma" loading="lazy" /></div>
+          <div class="carousel-item"><img src="assets/clientes/OSANAv2.png" alt="Osana" loading="lazy" /></div>
+          <div class="carousel-item"><img src="assets/clientes/PEGAKLEINv2.png" alt="Pegaklein" loading="lazy" /></div>
+          <div class="carousel-item"><img src="assets/clientes/PINVIACRILv2.png" alt="Pinviacril" loading="lazy" /></div>
         </div>
-       <!-- <button class="carousel-btn right" aria-label="Siguiente">&#10095;</button> -->
       </div>
     </section>
 
-
+    <!-- ===== CONTACTO ===== -->
     <section class="contact" id="contacto">
-      <h2 class="heading">Contacta<span>me</span></h2>
-
-      <form id="contact-form">
-        <div class="input-group">
-          <div class="input-box">
-            <input type="text" name="name" placeholder="Nombre" required />
-            <input type="email" name="email" placeholder="Email" required />
-          </div>
-         <div class="input-box">
-            <input type="text" name="phone" placeholder="Telefono" required />
+      <div class="contact-wrapper">
+        <div class="contact-info reveal">
+          <span class="section-tag">Hablemos</span>
+          <h2 class="heading contact-heading">Contacta<span>me</span></h2>
+          <p>¿Listo para darle vida a tu próximo proyecto? Escríbeme y recibe una propuesta personalizada.</p>
+          <div class="contact-details">
+            <div class="contact-detail-item">
+              <i class="bx bx-phone"></i>
+              <span class="no-gradient">+57 311 6111687</span>
+            </div>
+            <div class="contact-detail-item">
+              <i class="bx bx-envelope"></i>
+              <span class="no-gradient">contacto@sistemaslitograficos.com</span>
+            </div>
+            <div class="contact-detail-item">
+              <i class="bx bxl-whatsapp"></i>
+              <a href="https://wa.me/message/JYR4EQ7PPXWEM1" target="_blank" rel="noopener">WhatsApp directo</a>
+            </div>
           </div>
         </div>
-        <div class="input-group-2">
-          <textarea name="message" placeholder="mensaje..." cols="30" rows="10" required></textarea>
-          <input type="submit" value="Enviar" class="btn" />
+        <div class="contact-form-wrapper reveal">
+          <form id="contact-form">
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Tu nombre" required autocomplete="name" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <input type="email" name="email" placeholder="Tu email" required autocomplete="email" />
+              </div>
+              <div class="form-group">
+                <input type="tel" name="phone" placeholder="Teléfono" required autocomplete="tel" />
+              </div>
+            </div>
+            <div class="form-group">
+              <textarea name="message" placeholder="Cuéntame sobre tu proyecto..." rows="5" required></textarea>
+            </div>
+            <input type="submit" value="Enviar mensaje" class="btn btn-full" />
+          </form>
         </div>
-      </form>
+      </div>
     </section>
 
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
-      <div class="social-icons">
-          <a href="https://wa.me/message/JYR4EQ7PPXWEM1" target="_blank">
+      <div class="footer-content">
+        <a href="#home" class="logo">Sebastian <span>Sánchez</span></a>
+        <p class="footer-tagline">Gerente Comercial · Sistemas Litográficos</p>
+        <div class="footer-socials">
+          <a href="https://wa.me/message/JYR4EQ7PPXWEM1" target="_blank" rel="noopener" aria-label="WhatsApp">
             <i class="bx bxl-whatsapp"></i>
           </a>
-          <a href="https://www.instagram.com/sistemaslitograficossas/">
-            <i class='bx bxl-instagram'></i>
+          <a href="https://www.instagram.com/sistemaslitograficossas/" target="_blank" rel="noopener" aria-label="Instagram Sistemas">
+            <i class="bx bxl-instagram"></i>
           </a>
-          <a href="https://www.instagram.com/cuatrotorres/">
-            <i class='bx bxl-instagram'></i>
+          <a href="https://www.instagram.com/cuatrotorres/" target="_blank" rel="noopener" aria-label="Instagram Cuatro Torres">
+            <i class="bx bxl-instagram"></i>
           </a>
         </div>
-       
-        <p class="copyright"> &copy; Sistemas Litograficos <br> todos los derechos reservados</p>
+        <p class="copyright">&copy; 2026 Sistemas Litográficos · Todos los derechos reservados</p>
+      </div>
     </footer>
 
+    <!-- Floating WhatsApp — desktop -->
+    <a href="https://wa.me/message/JYR4EQ7PPXWEM1" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+      <i class="bx bxl-whatsapp"></i>
+    </a>
+
+    <!-- Volver arriba -->
+    <button class="back-to-top" id="back-to-top" aria-label="Volver arriba">
+      <i class="bx bx-up-arrow-alt"></i>
+    </button>
+
+    <!-- Barra de acciones — móvil -->
+    <div class="mobile-action-bar">
+      <div class="mobile-action-bar-inner">
+        <a href="tel:+573116111687" class="mob-action call">
+          <i class="bx bx-phone"></i>
+          <span>Llamar</span>
+        </a>
+        <a href="https://wa.me/message/JYR4EQ7PPXWEM1" target="_blank" rel="noopener" class="mob-action whatsapp">
+          <i class="bx bxl-whatsapp"></i>
+          <span>WhatsApp</span>
+        </a>
+        <a href="#contacto" class="mob-action contact">
+          <i class="bx bx-envelope"></i>
+          <span>Contactar</span>
+        </a>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>
