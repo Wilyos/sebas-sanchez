@@ -357,6 +357,16 @@ document.addEventListener('DOMContentLoaded', () => {
     original.forEach(item => track.appendChild(item.cloneNode(true)));
   }
 
+  // ===== FLIP CARDS (soporte táctil) =====
+  const serviceBoxes = document.querySelectorAll('.service-box');
+  serviceBoxes.forEach(box => {
+    box.addEventListener('click', () => {
+      const isFlipped = box.classList.contains('flipped');
+      serviceBoxes.forEach(b => b.classList.remove('flipped'));
+      if (!isFlipped) box.classList.add('flipped');
+    });
+  });
+
   // ===== BACK TO TOP =====
   const backToTopBtn = document.getElementById('back-to-top');
   if (backToTopBtn) {

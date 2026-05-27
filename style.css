@@ -763,11 +763,13 @@ section {
   line-height: 1.65;
 }
 
-.service-box:hover .service-front {
+.service-box:hover .service-front,
+.service-box.flipped .service-front {
   transform: rotateY(-180deg);
 }
 
-.service-box:hover .service-back {
+.service-box:hover .service-back,
+.service-box.flipped .service-back {
   transform: rotateY(0deg);
 }
 
@@ -1340,7 +1342,10 @@ section {
 
   .form-row { grid-template-columns: 1fr; }
 
-  .morph-wrapper { width: 24rem; height: 24rem; }
+  .home { padding-top: 10rem; gap: 2rem; }
+  .morph-wrapper { width: 19rem; height: 19rem; }
+  .home-content h3 { font-size: 2.2rem; }
+  .home-content > p { font-size: 1.6rem; }
 
   .social-links {
     display: grid;
@@ -1395,12 +1400,55 @@ section {
 
   .other-services-container {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
   }
 
-  .other-service-card { max-width: 100%; }
+  .other-service-card {
+    max-width: 100%;
+    width: 100%;
+    padding: 3rem 2.5rem;
+  }
+
+  .other-service-card img {
+    max-width: 90px;
+    max-height: 90px;
+  }
 
   .contact-form-wrapper { padding: 3rem 2.5rem; }
 
-  .process-step { min-width: 14rem; }
+  /* Proceso — carrusel horizontal swipeable */
+  .process-steps {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 1.5rem;
+    padding: 0.5rem 5% 2rem;
+    margin: 0 -5%;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+  }
+  .process-steps::-webkit-scrollbar { display: none; }
+  .process-step {
+    min-width: 78vw;
+    max-width: 78vw;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+    padding: 3rem 2.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 2rem;
+  }
+  .process-connector { display: none; }
+
+  /* Formulario — área táctil cómoda */
+  .form-group input,
+  .form-group textarea {
+    padding: 1.8rem 2rem;
+    font-size: 1.6rem;
+    min-height: 5.2rem;
+  }
 }
