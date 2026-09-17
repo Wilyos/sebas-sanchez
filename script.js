@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
       contactTitle: 'Contacta<span>me</span>',
       formNombre: 'Tu nombre',
       formEmpresa: 'Empresa o Negocio',
-      formEmail: 'Tu email',
+      formEmail: 'Tu email (opcional)',
       formTelefono: 'Teléfono',
       formMensaje: 'Cuéntame sobre tu proyecto...',
       formEnviar: 'Enviar mensaje',
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
       contactTitle: 'Contact<span>me</span>',
       formNombre: 'Your name',
       formEmpresa: 'Company / Business',
-      formEmail: 'Your email',
+      formEmail: 'Your email (optional)',
       formTelefono: 'Phone',
       formMensaje: 'Tell me about your project...',
       formEnviar: 'Send message',
@@ -329,18 +329,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===== CONTACT FORM =====
   const WHATSAPP_NUMBER = '573116111687'; // Sebastian Sánchez (+57 311 611 1687)
   const ASESOR_NAME = 'Sebastian Sánchez';
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw34uUnVRknwP2eil759X1mfyeeGbEVNcQv4X-JVMfWKk_NyLI9EF6D__JOB6lCnSrk/exec';
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxmgEZRWSTrlhxs5PXTSA11OtjCX1Bh-U3l5zrv_aNeW_nRUbJ-_OqyHeUyaoAnoMJ_HQ/exec';
   const contactForm = document.getElementById('contact-form');
 
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const fd = new FormData(contactForm);
-      const name    = (fd.get('name')    || '').toString().trim();
-      const empresa = (fd.get('empresa') || '').toString().trim();
-      const email   = (fd.get('email')   || '').toString().trim();
-      const phone   = (fd.get('phone')   || '').toString().trim();
-      const message = (fd.get('message') || '').toString().trim();
+      const name    = (fd.get('name')    || fd.get('nombre')   || '').toString().trim();
+      const empresa = (fd.get('empresa') || fd.get('company')  || '').toString().trim();
+      const email   = (fd.get('email')   || fd.get('correo')   || '').toString().trim();
+      const phone   = (fd.get('phone')   || fd.get('telefono') || fd.get('numero') || '').toString().trim();
+      const message = (fd.get('message') || fd.get('mensaje')  || '').toString().trim();
 
       if (!name || !phone) {
         alert(currentLang === 'en' ? 'Please fill in your name and phone/WhatsApp number.' : 'Por favor completa tu nombre y número de WhatsApp.');
@@ -359,34 +359,48 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         waText = `Hola ${ASESOR_NAME}, mi nombre es *${name}*` + (empresa ? ` de la empresa *${empresa}*` : '') + ` (tel: ${phone}).`;
         if (message) {
-          waText += `\n\n*Mensaje/Requerimiento:*\n${mensaje}`;
+          waText += `\n\n*Mensaje/Requerimiento:*\n${message}`;
         } else {
           waText += `\n\nMe gustaría cotizar y recibir asesoría sobre sus servicios de impresión y empaques.`;
         }
       }
 
       const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}`;
-      window.open(waUrl, '_blank', 'noopener,noreferrer');
+      const newWin = window.open(waUrl, '_blank', 'noopener,noreferrer');
+      if (!newWin || newWin.closed || typeof newWin.closed === 'undefined') {
+        window.location.href = waUrl;
+      }
 
-      if (APPS_SCRIPT_URL.startsWith('http')) {
-        const payload = new URLSearchParams({
+      if (APPS_SCRIPT_URL && APPS_SCRIPT_URL.startsWith('http')) {
+        const payload = {
           timestamp: new Date().toISOString(),
           asesor: ASESOR_NAME,
-          name: name,
           nombre: name,
+          name: name,
+          numero: phone,
+          telefono: phone,
+          phone: phone,
           empresa: empresa,
           company: empresa,
-          phone: phone,
-          numero: phone,
+          correo: email,
           email: email,
-          message: message,
           mensaje: message,
+          message: message,
           origen: 'landing-sebastian-sanchez',
-          page: location.href,
+          page: window.location.href,
           userAgent: navigator.userAgent
-        });
-        fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: payload })
-          .catch(err => console.warn('Apps Script error:', err));
+        };
+
+        try {
+          fetch(APPS_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          }).catch(err => console.warn('Apps Script error:', err));
+        } catch (err) {
+          console.warn('Apps Script error:', err);
+        }
       }
 
       if (downloadLink) downloadLink.click();
