@@ -328,19 +328,24 @@
         </div>
         <div class="contact-form-wrapper reveal">
           <form id="contact-form">
-            <div class="form-group">
-              <input type="text" name="name" placeholder="Tu nombre" required autocomplete="name" />
+            <div class="form-row">
+              <div class="form-group">
+                <input type="text" name="name" placeholder="Tu nombre" required autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <input type="text" name="empresa" placeholder="Empresa o Negocio" autocomplete="organization" />
+              </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <input type="email" name="email" placeholder="Tu email" required autocomplete="email" />
+                <input type="tel" name="phone" placeholder="Teléfono" required autocomplete="tel" />
               </div>
               <div class="form-group">
-                <input type="tel" name="phone" placeholder="Teléfono" required autocomplete="tel" />
+                <input type="email" name="email" placeholder="Tu email" autocomplete="email" />
               </div>
             </div>
             <div class="form-group">
-              <textarea name="message" placeholder="Cuéntame sobre tu proyecto..." rows="5" required></textarea>
+              <textarea name="message" placeholder="Cuéntame sobre tu proyecto..." rows="5"></textarea>
             </div>
             <input type="submit" value="Enviar mensaje" class="btn btn-full" />
           </form>
@@ -395,7 +400,7 @@
         </a>
       </div>
     </div>
-
+ 
     <script src="script.js"></script>
   </body>
 </html>

@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
       clientesTitle: 'Nuestros <span>Clientes</span>',
       contactTitle: 'Contacta<span>me</span>',
       formNombre: 'Tu nombre',
+      formEmpresa: 'Empresa o Negocio',
       formEmail: 'Tu email',
       formTelefono: 'Teléfono',
       formMensaje: 'Cuéntame sobre tu proyecto...',
@@ -88,6 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
       clientesTitle: 'Our <span>Clients</span>',
       contactTitle: 'Contact<span>me</span>',
       formNombre: 'Your name',
+      formEmpresa: 'Company / Business',
       formEmail: 'Your email',
       formTelefono: 'Phone',
       formMensaje: 'Tell me about your project...',
@@ -193,6 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Formulario
     const fields = {
       'input[name="name"]': t.formNombre,
+      'input[name="empresa"]': t.formEmpresa,
       'input[name="email"]': t.formEmail,
       'input[name="phone"]': t.formTelefono,
       'textarea[name="message"]': t.formMensaje
@@ -324,6 +327,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ===== CONTACT FORM =====
+  const WHATSAPP_NUMBER = '573116111687'; // Sebastian Sánchez (+57 311 611 1687)
+  const ASESOR_NAME = 'Sebastian Sánchez';
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw34uUnVRknwP2eil759X1mfyeeGbEVNcQv4X-JVMfWKk_NyLI9EF6D__JOB6lCnSrk/exec';
   const contactForm = document.getElementById('contact-form');
 
@@ -332,15 +337,54 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const fd = new FormData(contactForm);
       const name    = (fd.get('name')    || '').toString().trim();
+      const empresa = (fd.get('empresa') || '').toString().trim();
       const email   = (fd.get('email')   || '').toString().trim();
       const phone   = (fd.get('phone')   || '').toString().trim();
       const message = (fd.get('message') || '').toString().trim();
 
-      const assembled = `Hola, mi nombre es ${name || 'N/A'}, mis datos son ${email || 'N/A'} y ${phone || 'N/A'}\n${message}`;
-      window.open(`https://api.whatsapp.com/send?phone=573116111687&text=${encodeURIComponent(assembled)}`, '_blank', 'noopener');
+      if (!name || !phone) {
+        alert(currentLang === 'en' ? 'Please fill in your name and phone/WhatsApp number.' : 'Por favor completa tu nombre y número de WhatsApp.');
+        return;
+      }
+
+      // Construir mensaje estructurado para WhatsApp igual al de Fernando Sánchez
+      let waText = '';
+      if (currentLang === 'en') {
+        waText = `Hello ${ASESOR_NAME}, my name is *${name}*` + (empresa ? ` from the company *${empresa}*` : '') + ` (tel: ${phone}).`;
+        if (message) {
+          waText += `\n\n*Message/Requirement:*\n${message}`;
+        } else {
+          waText += `\n\nI would like to get a quote and advice on your printing and packaging services.`;
+        }
+      } else {
+        waText = `Hola ${ASESOR_NAME}, mi nombre es *${name}*` + (empresa ? ` de la empresa *${empresa}*` : '') + ` (tel: ${phone}).`;
+        if (message) {
+          waText += `\n\n*Mensaje/Requerimiento:*\n${mensaje}`;
+        } else {
+          waText += `\n\nMe gustaría cotizar y recibir asesoría sobre sus servicios de impresión y empaques.`;
+        }
+      }
+
+      const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}`;
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
 
       if (APPS_SCRIPT_URL.startsWith('http')) {
-        const payload = new URLSearchParams({ name, email, phone, message, origin: location.origin, page: location.href, userAgent: navigator.userAgent });
+        const payload = new URLSearchParams({
+          timestamp: new Date().toISOString(),
+          asesor: ASESOR_NAME,
+          name: name,
+          nombre: name,
+          empresa: empresa,
+          company: empresa,
+          phone: phone,
+          numero: phone,
+          email: email,
+          message: message,
+          mensaje: message,
+          origen: 'landing-sebastian-sanchez',
+          page: location.href,
+          userAgent: navigator.userAgent
+        });
         fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: payload })
           .catch(err => console.warn('Apps Script error:', err));
       }
